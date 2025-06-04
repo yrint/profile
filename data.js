@@ -13,7 +13,7 @@ const portfolioData = {
   profile: {
     occupation: "ソフトウェアエンジニア",
     specialties: "Web開発、機械学習、データサイエンス",
-    education: "東京大学 情報科学科 卒業",
+    education: "慶應義塾大学 情報科学科 卒業",
     career: "テクノロジー企業で5年間のソフトウェア開発経験を積み、現在はフリーランスとして活動。React、Python、機械学習を得意とし、スタートアップから大企業まで幅広いクライアントと協働。",
     hobbies: "読書、登山、写真撮影",
     languages: "日本語（ネイティブ）、英語（ビジネスレベル）"
