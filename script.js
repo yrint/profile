@@ -71,6 +71,7 @@ class PortfolioManager {
     this.renderHero();
     this.renderProfile();
     this.renderPublications();
+    this.renderPredictions();
     this.renderContact();
     this.renderFooter();
   }
@@ -148,6 +149,71 @@ class PortfolioManager {
           <div class="publication-date">${pub.date}</div>
           <p>${pub.description}</p>
         </div>
+      `).join('');
+    }
+  }
+
+  // 競馬予想セクションのレンダリング
+  renderPredictions() {
+    const predictionsContainer = document.querySelector('.predictions-container');
+    if (predictionsContainer && horsePredictionsData) {
+      predictionsContainer.innerHTML = horsePredictionsData.map(prediction => `
+        <article class="prediction-article">
+          <div class="prediction-header">
+            <h3>${prediction.raceInfo}</h3>
+            <div class="prediction-date">${prediction.date}</div>
+          </div>
+          <div class="prediction-content">
+            <div class="prediction-section">
+              <h4>📊 出馬表</h4>
+              <table class="entrants-table">
+                <thead>
+                  <tr>
+                    <th>馬番</th>
+                    <th>馬名</th>
+                    <th>騎手</th>
+                    <th>斤量</th>
+                    <th>オッズ</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${prediction.entrants.map(horse => `
+                    <tr>
+                      <td><span class="horse-number">${horse.number}</span></td>
+                      <td>${horse.horse}</td>
+                      <td>${horse.jockey}</td>
+                      <td>${horse.weight}</td>
+                      <td class="odds">${horse.odds}倍</td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+            </div>
+            
+            <div class="prediction-section">
+              <h4>🎯 予想</h4>
+              <div class="prediction-text">${prediction.prediction}</div>
+            </div>
+            
+            <div class="prediction-section">
+              <h4>💰 買い目</h4>
+              <div class="betting-info">
+                <div class="betting-item">
+                  <span class="betting-label">本命:</span>
+                  <span class="betting-value">${prediction.betting.main}</span>
+                </div>
+                <div class="betting-item">
+                  <span class="betting-label">対抗:</span>
+                  <span class="betting-value">${prediction.betting.sub}</span>
+                </div>
+                <div class="betting-item">
+                  <span class="betting-label">穴狙い:</span>
+                  <span class="betting-value">${prediction.betting.wide}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
       `).join('');
     }
   }

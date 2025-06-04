@@ -5,11 +5,12 @@
 ## ファイル構成
 
 ```
-├── index.html      # メインのHTMLファイル
-├── styles.css      # スタイル定義
-├── script.js       # JavaScript機能
-├── data.js         # データ定義（更新用）
-└── README.md       # このファイル
+├── index.html              # メインのHTMLファイル
+├── styles.css              # スタイル定義
+├── script.js               # JavaScript機能
+├── data.js                 # 基本データ定義（プロフィール、連絡先等）
+├── horse-predictions.js    # 競馬予想データ（更新用）
+└── README.md               # このファイル
 ```
 
 ## 情報の更新方法
@@ -57,7 +58,31 @@ publications: [
 ]
 ```
 
-### 4. 連絡先情報の更新
+### 4. 競馬予想記事の追加/編集
+
+`data.js`の`horsePredictions`配列に新しい予想記事を追加：
+
+```javascript
+horsePredictions: [
+  {
+    id: 3,
+    date: "2025年6月22日",
+    raceInfo: "札幌11R G1 札幌記念",
+    entrants: [
+      { number: 1, horse: "馬名", jockey: "騎手名", weight: "斤量", odds: "オッズ" },
+      // ... 他の出走馬
+    ],
+    prediction: "レース予想の詳細分析...",
+    betting: {
+      main: "本命の買い目",
+      sub: "対抗の買い目", 
+      wide: "穴狙いの買い目"
+    }
+  }
+]
+```
+
+### 5. 連絡先情報の更新
 
 `data.js`の`contact`セクションを編集：
 

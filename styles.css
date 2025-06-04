@@ -168,6 +168,131 @@ main {
   margin-bottom: 1rem;
 }
 
+/* 競馬予想セクション */
+.predictions-container {
+  display: grid;
+  gap: 3rem;
+}
+
+.prediction-article {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.prediction-article:hover {
+  transform: translateY(-5px);
+}
+
+.prediction-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 2rem;
+  text-align: center;
+}
+
+.prediction-header h3 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.prediction-date {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+.prediction-content {
+  padding: 2rem;
+}
+
+.prediction-section {
+  margin-bottom: 2rem;
+}
+
+.prediction-section h4 {
+  color: #667eea;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #667eea;
+  padding-bottom: 0.5rem;
+}
+
+.entrants-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+
+.entrants-table th,
+.entrants-table td {
+  padding: 0.8rem;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.entrants-table th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+  color: #333;
+}
+
+.entrants-table tr:hover {
+  background-color: #f8f9fa;
+}
+
+.horse-number {
+  background: #667eea;
+  color: white;
+  padding: 0.3rem 0.6rem;
+  border-radius: 50%;
+  font-weight: bold;
+  display: inline-block;
+  min-width: 2rem;
+  text-align: center;
+}
+
+.odds {
+  font-weight: bold;
+  color: #e74c3c;
+}
+
+.prediction-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #444;
+  margin-bottom: 1rem;
+}
+
+.betting-info {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 10px;
+  border-left: 4px solid #667eea;
+}
+
+.betting-item {
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+}
+
+.betting-label {
+  font-weight: 600;
+  color: #667eea;
+  min-width: 80px;
+  margin-right: 1rem;
+}
+
+.betting-value {
+  background: white;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border: 1px solid #e0e0e0;
+  font-weight: 500;
+}
+
 /* Contact セクション */
 .contact-content {
   display: grid;
@@ -252,6 +377,8 @@ footer {
 
   nav ul {
     gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   .hero h1 {
@@ -266,5 +393,33 @@ footer {
 
   .publication-grid {
     grid-template-columns: 1fr;
+  }
+
+  .prediction-header {
+    padding: 1.5rem;
+  }
+
+  .prediction-content {
+    padding: 1rem;
+  }
+
+  .entrants-table {
+    font-size: 0.9rem;
+  }
+
+  .entrants-table th,
+  .entrants-table td {
+    padding: 0.5rem;
+  }
+
+  .betting-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .betting-label {
+    min-width: auto;
+    margin-right: 0;
   }
 }

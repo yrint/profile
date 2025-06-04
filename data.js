@@ -5,7 +5,7 @@ const portfolioData = {
     name: "山中凜太郎",
     nameEn: "Rintaro Yamanaka",
     title: "ソフトウェアエンジニア",
-    heroMessage: "ソフトウェア開発者として、革新的なソリューションの創造に情熱を注いでいます。技術と創造性を融合させ、ユーザーに価値を提供するプロダクトの開発に取り組んでいます。",
+    heroMessage: "⚠️ 注意: このサイトは架空の人物のポートフォリオサンプルです。掲載されている個人情報、経歴、論文、連絡先等は全て架空のものであり、実在の人物や組織とは一切関係ありません。⚠️\n\nソフトウェア開発者として、革新的なソリューションの創造に情熱を注いでいます。技術と創造性を融合させ、ユーザーに価値を提供するプロダクトの開発に取り組んでいます。",
     profileImage: "プロフィール画像" // 実際の画像パスに変更可能
   },
 
@@ -63,6 +63,7 @@ const portfolioData = {
     { id: "home", label: "Home" },
     { id: "profile", label: "Profile" },
     { id: "publication", label: "Publication" },
+    { id: "predictions", label: "競馬予想" },
     { id: "contact", label: "Contact" }
   ]
 };
