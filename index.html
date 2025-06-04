@@ -1,448 +1,120 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>山中凛太郎 - ポートフォリオ</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f9f9f9;
-        }
-
-        /* ヘッダー */
-        header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 1rem 0;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            cursor: pointer;
-        }
-
-        nav a:hover, nav a.active {
-            color: #ffeb3b;
-        }
-
-        /* メインコンテンツ */
-        main {
-            margin-top: 80px;
-            min-height: calc(100vh - 140px);
-        }
-
-        .section {
-            display: none;
-            padding: 4rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section.active {
-            display: block;
-        }
-
-        .section h2 {
-            color: #667eea;
-            margin-bottom: 2rem;
-            font-size: 2.5rem;
-            text-align: center;
-        }
-
-        /* Home セクション */
-        .hero {
-            text-align: center;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            padding: 6rem 2rem;
-            margin: -4rem -2rem 4rem -2rem;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            color: #333;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            color: #666;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* Profile セクション */
-        .profile-content {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .profile-image {
-            text-align: center;
-        }
-
-        .profile-placeholder {
-            width: 250px;
-            height: 250px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-            margin: 0 auto;
-        }
-
-        .profile-info h3 {
-            color: #667eea;
-            margin-bottom: 1rem;
-            font-size: 1.8rem;
-        }
-
-        .profile-info p {
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-
-        /* Publication セクション */
-        .publication-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .publication-item {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .publication-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .publication-item h3 {
-            color: #667eea;
-            margin-bottom: 1rem;
-        }
-
-        .publication-date {
-            color: #888;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        /* Contact セクション */
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-        }
-
-        .contact-form {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-            color: #333;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.8rem;
-            border: 2px solid #e0e0e0;
-            border-radius: 5px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #667eea;
-        }
-
-        .btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 5px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-        }
-
-        .contact-info h3 {
-            color: #667eea;
-            margin-bottom: 1rem;
-        }
-
-        .contact-info p {
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-        }
-
-        /* フッター */
-        footer {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
-        }
-
-        /* レスポンシブデザイン */
-        @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            nav ul {
-                gap: 1rem;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .profile-content,
-            .contact-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .publication-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>山中凜太郎 - ポートフォリオ</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
     <!-- ヘッダー -->
     <header>
-        <div class="header-container">
-            <div class="logo">山中凛太郎</div>
-            <nav>
-                <ul>
-                    <li><a href="#" onclick="showSection('home')" class="nav-link active">Home</a></li>
-                    <li><a href="#" onclick="showSection('profile')" class="nav-link">Profile</a></li>
-                    <li><a href="#" onclick="showSection('publication')" class="nav-link">Publication</a></li>
-                    <li><a href="#" onclick="showSection('contact')" class="nav-link">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
+      <div class="header-container">
+        <div class="logo">山中凜太郎</div>
+        <nav>
+          <ul>
+            <li>
+              <a href="#" onclick="showSection('home')" class="nav-link active">Home</a>
+            </li>
+            <li>
+              <a href="#" onclick="showSection('profile')" class="nav-link">Profile</a>
+            </li>
+            <li>
+              <a href="#" onclick="showSection('publication')" class="nav-link">Publication</a>
+            </li>
+            <li>
+              <a href="#" onclick="showSection('contact')" class="nav-link">Contact</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </header>
 
     <!-- メインコンテンツ -->
     <main>
-        <!-- Home セクション -->
-        <section id="home" class="section active">
-            <div class="hero">
-                <h1>Welcome to My Portfolio</h1>
-                <p>ソフトウェア開発者として、革新的なソリューションの創造に情熱を注いでいます。技術と創造性を融合させ、ユーザーに価値を提供するプロダクトの開発に取り組んでいます。</p>
-            </div>
-            <div style="text-align: center; padding: 2rem;">
-                <h2>最新の活動</h2>
-                <p>最新のプロジェクトや研究活動については、PublicationやProfileセクションをご覧ください。</p>
-            </div>
-        </section>
+      <!-- Home セクション -->
+      <section id="home" class="section active">
+        <div class="hero">
+          <h1>Welcome to My Portfolio</h1>
+          <p>
+            ソフトウェア開発者として、革新的なソリューションの創造に情熱を注いでいます。技術と創造性を融合させ、ユーザーに価値を提供するプロダクトの開発に取り組んでいます。
+          </p>
+        </div>
+        <div style="text-align: center; padding: 2rem">
+          <h2>最新の活動</h2>
+          <p>
+            最新のプロジェクトや研究活動については、PublicationやProfileセクションをご覧ください。
+          </p>
+        </div>
+      </section>
 
-        <!-- Profile セクション -->
-        <section id="profile" class="section">
-            <h2>Profile</h2>
-            <div class="profile-content">
-                <div class="profile-image">
-                    <div class="profile-placeholder">
-                        プロフィール画像
-                    </div>
-                </div>
-                <div class="profile-info">
-                    <h3>山中凛太郎 (Rintaro Yamanaka)</h3>
-                    <p><strong>職業:</strong> ソフトウェアエンジニア</p>
-                    <p><strong>専門分野:</strong> Web開発、機械学習、データサイエンス</p>
-                    <p><strong>学歴:</strong> 東京大学 情報科学科 卒業</p>
-                    <p><strong>経歴:</strong> テクノロジー企業で5年間のソフトウェア開発経験を積み、現在はフリーランスとして活動。React、Python、機械学習を得意とし、スタートアップから大企業まで幅広いクライアントと協働。</p>
-                    <p><strong>趣味:</strong> 読書、登山、写真撮影</p>
-                    <p><strong>言語:</strong> 日本語（ネイティブ）、英語（ビジネスレベル）</p>
-                </div>
-            </div>
-        </section>
+      <!-- Profile セクション -->
+      <section id="profile" class="section">
+        <h2>Profile</h2>
+        <div class="profile-content">
+          <div class="profile-image">
+            <div class="profile-placeholder">プロフィール画像</div>
+          </div>
+          <div class="profile-info">
+            <!-- プロフィール情報はJavaScriptで動的に生成 -->
+          </div>
+        </div>
+      </section>
 
-        <!-- Publication セクション -->
-        <section id="publication" class="section">
-            <h2>Publications</h2>
-            <div class="publication-grid">
-                <div class="publication-item">
-                    <h3>機械学習を用いたWebアプリケーション最適化手法</h3>
-                    <div class="publication-date">2024年3月</div>
-                    <p>Webアプリケーションのパフォーマンス向上のために機械学習アルゴリズムを適用した研究。ユーザー行動パターンの分析により、レスポンス時間を30%改善する手法を提案。</p>
-                </div>
-                <div class="publication-item">
-                    <h3>React Hooksを活用したモダンフロントエンド設計</h3>
-                    <div class="publication-date">2023年11月</div>
-                    <p>React 18の新機能を活用したスケーラブルなフロントエンドアーキテクチャの設計パターンについて。実際のプロジェクトでの実装例と性能評価を含む。</p>
-                </div>
-                <div class="publication-item">
-                    <h3>データ可視化における UX デザインの重要性</h3>
-                    <div class="publication-date">2023年8月</div>
-                    <p>複雑なデータを直感的に理解できる可視化手法の研究。D3.jsとReactを組み合わせたインタラクティブなダッシュボード開発について。</p>
-                </div>
-                <div class="publication-item">
-                    <h3>クラウドネイティブアプリケーションの監視とロギング</h3>
-                    <div class="publication-date">2023年5月</div>
-                    <p>Kubernetes環境でのマイクロサービス監視システムの構築。Prometheus、Grafana、ELKスタックを用いた包括的な監視ソリューション。</p>
-                </div>
-            </div>
-        </section>
+      <!-- Publication セクション -->
+      <section id="publication" class="section">
+        <h2>Publications</h2>
+        <div class="publication-grid">
+          <!-- 出版物リストはJavaScriptで動的に生成 -->
+        </div>
+      </section>
 
-        <!-- Contact セクション -->
-        <section id="contact" class="section">
-            <h2>Contact</h2>
-            <div class="contact-content">
-                <div class="contact-form">
-                    <h3>お問い合わせフォーム</h3>
-                    <form>
-                        <div class="form-group">
-                            <label for="name">お名前</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">メールアドレス</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">件名</label>
-                            <input type="text" id="subject" name="subject" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">メッセージ</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn">送信</button>
-                    </form>
-                </div>
-                <div class="contact-info">
-                    <h3>連絡先情報</h3>
-                    <p><strong>Email:</strong> contact@yamanaka-rintaro.com</p>
-                    <p><strong>Phone:</strong> +81-90-1234-5678</p>
-                    <p><strong>LinkedIn:</strong> linkedin.com/in/rintaro-yamanaka</p>
-                    <p><strong>GitHub:</strong> github.com/yrint</p>
-                    <p><strong>所在地:</strong> 東京都渋谷区</p>
-                    
-                    <h3 style="margin-top: 2rem;">営業時間</h3>
-                    <p>月曜日 - 金曜日: 9:00 - 18:00</p>
-                    <p>土曜日: 10:00 - 16:00</p>
-                    <p>日曜日: 休業</p>
-                </div>
-            </div>
-        </section>
+      <!-- Contact セクション -->
+      <section id="contact" class="section">
+        <h2>Contact</h2>
+        <div class="contact-content">
+          <div class="contact-form">
+            <h3>お問い合わせフォーム</h3>
+            <form id="contact-form">
+              <div class="form-group">
+                <label for="name">お名前</label>
+                <input type="text" id="name" name="name" required />
+              </div>
+              <div class="form-group">
+                <label for="email">メールアドレス</label>
+                <input type="email" id="email" name="email" required />
+              </div>
+              <div class="form-group">
+                <label for="subject">件名</label>
+                <input type="text" id="subject" name="subject" required />
+              </div>
+              <div class="form-group">
+                <label for="message">メッセージ</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  required
+                ></textarea>
+              </div>
+              <button type="submit" class="btn">送信</button>
+            </form>
+          </div>
+          <div class="contact-info">
+            <!-- 連絡先情報はJavaScriptで動的に生成 -->
+          </div>
+        </div>
+      </section>
     </main>
 
     <!-- フッター -->
     <footer>
-        <p>&copy; 2024 山中凛太郎 (Rintaro Yamanaka) | 〒150-0002 東京都渋谷区渋谷1-2-3 テクノロジービル5F</p>
-        <p>Email: contact@yamanaka-rintaro.com | Tel: +81-90-1234-5678</p>
+      <!-- フッター内容はJavaScriptで動的に生成 -->
     </footer>
 
-    <script>
-        function showSection(sectionName) {
-            // 全てのセクションを非表示にする
-            const sections = document.querySelectorAll('.section');
-            sections.forEach(section => {
-                section.classList.remove('active');
-            });
-
-            // 選択されたセクションを表示する
-            document.getElementById(sectionName).classList.add('active');
-
-            // ナビゲーションのアクティブ状態を更新
-            const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-            });
-
-            // クリックされたリンクにアクティブクラスを追加
-            event.target.classList.add('active');
-
-            // ページトップにスクロール
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
-
-        // フォーム送信の処理
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('お問い合わせありがとうございます。後日ご連絡させていただきます。');
-        });
-
-        // スムーズスクロール効果
-        document.addEventListener('DOMContentLoaded', function() {
-            // 初期ロード時のアニメーション
-            setTimeout(() => {
-                document.body.style.opacity = '1';
-            }, 100);
-        });
-    </script>
-</body>
+    <!-- JavaScript読み込み -->
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+  </body>
 </html>
+
